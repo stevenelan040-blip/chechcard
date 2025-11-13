@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f2f4f8;
+      background-color: #f2f4f8;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,7 +17,7 @@
       background: #fff;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       width: 320px;
     }
     .contact-form h2 {
@@ -25,7 +25,7 @@
       color: #333;
       margin-bottom: 20px;
     }
-    .contact-form input, .contact-form textarea {
+    .contact-form input {
       width: 100%;
       padding: 10px;
       margin: 8px 0;
@@ -46,8 +46,9 @@
       background: #0056b3;
     }
     .message {
-      margin-top: 10px;
       text-align: center;
+      margin-top: 10px;
+      color: green;
     }
   </style>
 </head>
@@ -55,42 +56,13 @@
 
   <div class="contact-form">
     <h2>Contact Us</h2>
-    <form id="contactForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="tel" id="phone" placeholder="Phone Number" required>
-      <input type="text" id="subject" placeholder="Subject" required>
+    <form action="send_mail.php" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="text" name="subject" placeholder="Subject" required>
       <button type="submit">Submit</button>
-      <p class="message" id="msg"></p>
     </form>
   </div>
-
-  <!-- EmailJS Library -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script>
-    (function(){
-      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS Public Key
-    })();
-
-    document.getElementById("contactForm").addEventListener("submit", function(e){
-      e.preventDefault();
-
-      const params = {
-        name: document.getElementById("name").value,
-        phone: document.getElementById("phone").value,
-        subject: document.getElementById("subject").value,
-        to_email: "bhattsanjni729@gmail.com"
-      };
-
-      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
-      .then(function() {
-          document.getElementById("msg").innerText = "✅ Message sent successfully!";
-          document.getElementById("contactForm").reset();
-      }, function(error) {
-          document.getElementById("msg").innerText = "❌ Failed to send. Try again!";
-          console.log(error);
-      });
-    });
-  </script>
 
 </body>
 </html>
