@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = htmlspecialchars($_POST['phone']);
     $subject = htmlspecialchars($_POST['subject']);
 
-    $to = "bhattsanjni729@gmail.com";
+    $to = "bhattsunny729@gmail.com";
     $email_subject = "New Inquiry from Contact Form";
     $message = "
     Name: $name\n
@@ -23,4 +23,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Access denied!";
 }
+
 ?>
